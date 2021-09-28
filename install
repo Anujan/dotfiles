@@ -17,3 +17,6 @@ EOF
 echo "source ~/.zlogin_spin" >> ./.zlogin
 echo "source ~/.zlogout_spin" >> ./.zlogout
 echo "source ~/.zshrc_spin" >> ./.zshrc 
+
+# Add git module
+sed -i "/^zstyle.':prezto:load'.pmodule.*/a 'git' \\\\" ~/.zpreztorc
