@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Rename spin provided zsh configs
+mv ~/.zlogin ~/.zlogin_spin
+mv ~/.zshrc ~/.zshrc_spin
+mv ~/.zlogout ~/.zlogout_spin
+
+echo "Installing Prezto"
+/usr/bin/zsh <<'EOF'
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+EOF
+
+echo "source ~/.zlogin_spin" >> ./.zlogin
+echo "source ~/.zlogout_spin" >> ./.zlogout
+echo "source ~/.zshrc_spin" >> ./.zshrc 
