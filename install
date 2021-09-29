@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt-get install nano
+
 # Rename spin provided zsh configs
 mv ~/.zlogin ~/.zlogin_spin
 mv ~/.zshrc ~/.zshrc_spin
